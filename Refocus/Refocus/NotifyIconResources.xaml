@@ -5,18 +5,24 @@
 
     <!-- The taskbar context menu -->
     <ContextMenu x:Shared="false" x:Key="SysTrayMenu">
-        <MenuItem Header="Show Window" Command="{Binding ShowWindowCommand}" />
-        <MenuItem Header="Hide Window" Command="{Binding HideWindowCommand}" />
+        <MenuItem Header="Do not disturb"/>
+        <MenuItem Header="Settings" Command="{Binding ShowWindowCommand}" />
+        <MenuItem Header="About"/>
         <Separator />
         <MenuItem Header="Exit" Command="{Binding ExitApplicationCommand}" />
     </ContextMenu>
 
     <!-- The application's NotifyIcon - started from App.xaml.cs. Declares its own view model. -->
     <tb:TaskbarIcon x:Key="NotifyIcon"
-                    IconSource="/Images/NetDrives.ico"
+                    IconSource="/Images/NotifyIcon.ico"
                     ToolTipText="Double-click for window, right-click for menu"
                     DoubleClickCommand="{Binding ShowWindowCommand}"
-                    ContextMenu="{StaticResource SysTrayMenu}">
+                    ContextMenu="{StaticResource SysTrayMenu}"
+                    ContextMenuService.Placement="Top">
+
+        <tb:TaskbarIcon.TrayToolTip>
+            <local:PopupControl />
+        </tb:TaskbarIcon.TrayToolTip>
 
         <!-- self-assign a data context (could also be done programmatically) -->
         <tb:TaskbarIcon.DataContext>
