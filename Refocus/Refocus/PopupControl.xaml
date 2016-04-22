@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Refocus.PopupControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Refocus"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <Border Background="White" BorderBrush="Coral" BorderThickness="2" CornerRadius="4" Width="160" Height="100">
+                <StackPanel>
+                    <TextBlock Text="18:42" Foreground="Coral" FontSize="48" TextAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="Mins till break" FontStyle="Italic" TextAlignment="Center" />
+
+                </StackPanel>
+            </Border>
+            <Polygon Points="0,0 10,0 5,10, 0,0" Fill="Coral" HorizontalAlignment="Center"/>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
