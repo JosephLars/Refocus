@@ -1,0 +1,6 @@
+{
+  "name": "Refocus",
+  "tagline": "Timely notifications reminding you to take a break from the screen.",
+  "body": "###Staring at your computer for too long is bad. Really bad.\r\n\r\nEye strain is a frequent issue for computer workers. Your eyes need frequent breaks.\r\n\r\nUnfortunately most people are not getting the frequent breaks they need. We get too absorbed in our work that our eyes are the last thing on our minds.\r\n\r\nThat's why I made a little application called Refocus, a little WPF app that lives in the System Tray. It runs in the background, giving you timely notifications to take a break from the screen.\r\n\r\nThis app will not only save your eyes, but might also increase your productivity at the same time. Studies show that periodic breaks from work can boost your productivity, as your mind will stay focused for longer.\r\n\r\nSo do your body a favor and install Refocus.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
