@@ -75,7 +75,6 @@ namespace Refocus
                 SendNotification();
                 startTime = DateTime.Now;
             }
-
             //Print timeLeft
             PrintTimeLeft();
         }
@@ -167,7 +166,11 @@ namespace Refocus
 
         public void SendMessageBox()
         {
+            //Stop timer while message box is showing. Prevents MessageBoxes popping up error. 
+            //http://stackoverflow.com/questions/17384487/c-sharp-message-box-pops-up-repeatedly-in-a-timer
+            timer1.Stop();
             MessageBox.Show("Take a break", "Refocus");
+            timer1.Start();
         }
         #endregion
 
