@@ -1,19 +1,18 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using System.IO;
 
-namespace TrayTester
+namespace Refocus
 {
     public partial class Form1 : Form
     {
-
         // ContextMenu's Exit command used
         private bool allowClose;
 
@@ -40,11 +39,17 @@ namespace TrayTester
             SetUp();
         }
 
+        /// <summary>
+        /// Save settings on every change
+        /// </summary>
         private void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             Properties.Settings.Default.Save();
         }
 
+        /// <summary>
+        /// Prevents form from showing in task switcher
+        /// </summary>
         protected override void SetVisibleCore(bool value)
         {
             value = false;
@@ -54,17 +59,10 @@ namespace TrayTester
             base.SetVisibleCore(value);
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            if (!allowClose)
-            {
-                this.Hide();
-                e.Cancel = true;
-            }
-            base.OnFormClosing(e);
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// Runs every tick
+        /// </summary>
+        private void timer1_Tick(object sender, EventArgs e)
         {
             //Reset elapsedTime if inactive
             if (Properties.Settings.Default.InactivityDetection == true)
@@ -82,26 +80,9 @@ namespace TrayTester
             PrintTimeLeft();
         }
 
-        public void SendNotification()
-        {
-            if (Properties.Settings.Default.NotificationType == "Balloon Tooltip")
-                SendBubble();
-            else if (Properties.Settings.Default.NotificationType == "Message Box")
-                SendMessageBox();
-        }
-
-        private void SendBubble()
-        {
-            this.notifyIcon1.BalloonTipText = "Take a break";
-            this.notifyIcon1.BalloonTipTitle = "Refocus";
-            this.notifyIcon1.ShowBalloonTip(10000);
-        }
-
-        public void SendMessageBox()
-        {
-            MessageBox.Show("Take a break", "Refocus");
-        }
-
+        /// <summary>
+        /// Updates the time left in the contextMenuStrip
+        /// </summary>
         private void PrintTimeLeft()
         {
             DateTime endTime = startTime + interval;
@@ -122,6 +103,9 @@ namespace TrayTester
             contextMenuStrip1.Items[0].Text = timeLeft.ToString(@"mm\:ss");
         }
 
+        /// <summary>
+        /// Sets up the custom contextMenuStrip
+        /// </summary>
         private void SetUp()
         {
             //Time Remaining Display
@@ -152,13 +136,49 @@ namespace TrayTester
             PrintTimeLeft();
         }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Sets the application to run at startup
+        /// </summary>
+        public static void SetStartup(bool onOff)
         {
-            allowClose = true;
-            Application.Exit();
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(StartupKey, true);
+
+            if (onOff)
+                key.SetValue(StartupValue, Application.ExecutablePath.ToString());
+            else
+                key.DeleteValue(StartupValue, false);
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        #region Notifications
+        public void SendNotification()
+        {
+            if (Properties.Settings.Default.NotificationType == "Balloon Tooltip")
+                SendBubble();
+            else if (Properties.Settings.Default.NotificationType == "Message Box")
+                SendMessageBox();
+        }
+
+        private void SendBubble()
+        {
+            this.notifyIcon1.BalloonTipText = "Take a break";
+            this.notifyIcon1.BalloonTipTitle = "Refocus";
+            this.notifyIcon1.ShowBalloonTip(10000);
+        }
+
+        public void SendMessageBox()
+        {
+            MessageBox.Show("Take a break", "Refocus");
+        }
+        #endregion
+
+        #region toolStripMenuItems
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var settings = new SettingsPage(this);
+            settings.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var about = new AboutPage();
             about.ShowDialog();
@@ -167,21 +187,11 @@ namespace TrayTester
             ////MessageBox.Show(Properties.Settings.Default.LaunchOnStartUp.ToString());
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void exitRefocusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var settings = new SettingsPage(this);
-            settings.ShowDialog();
+            allowClose = true;
+            Application.Exit();
         }
-
-        public static void SetStartup(bool onOff)
-        {
-            //Set the application to run at startup
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(StartupKey, true);
-
-            if (onOff)
-                key.SetValue(StartupValue, Application.ExecutablePath.ToString());
-            else
-                key.DeleteValue(StartupValue, false);
-        }
+        #endregion
     }
 }
