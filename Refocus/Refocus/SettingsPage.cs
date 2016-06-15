@@ -29,7 +29,7 @@ namespace Refocus
         private void SettingsPage_Load(object sender, EventArgs e)
         {
             updAlertInterval.Value = Properties.Settings.Default.IntervalMins;
-            updInactivityDetection.Value = Properties.Settings.Default.InactivitySecs;
+            updInactivityDetection.Value = Properties.Settings.Default.InactivityMins;
             cboAlertType.SelectedItem = Properties.Settings.Default.NotificationType;
         }
 
@@ -59,7 +59,7 @@ namespace Refocus
 
         private void updInactivityDetection_ValueChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.InactivitySecs = (int)updInactivityDetection.Value;
+            Properties.Settings.Default.InactivityMins = (int)updInactivityDetection.Value;
         }
 
         private void btnResetSettings_Click(object sender, EventArgs e)
@@ -67,15 +67,10 @@ namespace Refocus
             Properties.Settings.Default.Reset();
 
             updAlertInterval.Value = Properties.Settings.Default.IntervalMins;
-            updInactivityDetection.Value = Properties.Settings.Default.InactivitySecs;
+            updInactivityDetection.Value = Properties.Settings.Default.InactivityMins;
             cboAlertType.SelectedItem = Properties.Settings.Default.NotificationType;
 
             Form1.SetStartup(false);
-        }
-
-        private void btnResetTimer_Click(object sender, EventArgs e)
-        {
-            main.startTime = DateTime.Now;
         }
 
     }

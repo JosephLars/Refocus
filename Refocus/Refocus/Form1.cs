@@ -66,7 +66,7 @@ namespace Refocus
         {
             //Reset elapsedTime if inactive
             if (Properties.Settings.Default.InactivityDetection == true)
-                if (_inactiveTimeRetriever.GetInactiveTime().Value.TotalSeconds > Properties.Settings.Default.InactivitySecs)
+                if (_inactiveTimeRetriever.GetInactiveTime().Value.TotalMinutes > Properties.Settings.Default.InactivityMins)
                     startTime = DateTime.Now;
 
             //Notify and reset elapsedTime if interval reached
@@ -195,6 +195,12 @@ namespace Refocus
             allowClose = true;
             Application.Exit();
         }
+
+        private void ResetTimerStripMenuItem_Click(object sender, EventArgs e)
+        {
+            startTime = DateTime.Now;
+        }
         #endregion
+
     }
 }

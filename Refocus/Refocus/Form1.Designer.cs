@@ -32,16 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.doNotDisturbToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitRefocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hoursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hoursToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitRefocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ResetTimerStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,12 +59,19 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
             this.doNotDisturbToolStripMenuItem,
+            this.ResetTimerStripMenuItem,
+            this.toolStripSeparator2,
             this.settingsToolStripMenuItem,
             this.aboutToolStripMenuItem,
-            this.toolStripSeparator2,
+            this.toolStripSeparator3,
             this.exitRefocusToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 154);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // doNotDisturbToolStripMenuItem
             // 
@@ -73,6 +82,24 @@
             this.doNotDisturbToolStripMenuItem.Name = "doNotDisturbToolStripMenuItem";
             this.doNotDisturbToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.doNotDisturbToolStripMenuItem.Text = "Do not disturb";
+            // 
+            // hourToolStripMenuItem
+            // 
+            this.hourToolStripMenuItem.Name = "hourToolStripMenuItem";
+            this.hourToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.hourToolStripMenuItem.Text = "1 hour";
+            // 
+            // hoursToolStripMenuItem
+            // 
+            this.hoursToolStripMenuItem.Name = "hoursToolStripMenuItem";
+            this.hoursToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.hoursToolStripMenuItem.Text = "3 hours";
+            // 
+            // hoursToolStripMenuItem1
+            // 
+            this.hoursToolStripMenuItem1.Name = "hoursToolStripMenuItem1";
+            this.hoursToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.hoursToolStripMenuItem1.Text = "8 hours";
             // 
             // settingsToolStripMenuItem
             // 
@@ -88,6 +115,11 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
             // exitRefocusToolStripMenuItem
             // 
             this.exitRefocusToolStripMenuItem.Name = "exitRefocusToolStripMenuItem";
@@ -95,39 +127,23 @@
             this.exitRefocusToolStripMenuItem.Text = "Exit Refocus";
             this.exitRefocusToolStripMenuItem.Click += new System.EventHandler(this.exitRefocusToolStripMenuItem_Click);
             // 
-            // hourToolStripMenuItem
-            // 
-            this.hourToolStripMenuItem.Name = "hourToolStripMenuItem";
-            this.hourToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hourToolStripMenuItem.Text = "1 hour";
-            // 
-            // hoursToolStripMenuItem
-            // 
-            this.hoursToolStripMenuItem.Name = "hoursToolStripMenuItem";
-            this.hoursToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hoursToolStripMenuItem.Text = "3 hours";
-            // 
-            // hoursToolStripMenuItem1
-            // 
-            this.hoursToolStripMenuItem1.Name = "hoursToolStripMenuItem1";
-            this.hoursToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.hoursToolStripMenuItem1.Text = "8 hours";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // ResetTimerStripMenuItem
+            // 
+            this.ResetTimerStripMenuItem.Name = "ResetTimerStripMenuItem";
+            this.ResetTimerStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ResetTimerStripMenuItem.Text = "Reset Timer";
+            this.ResetTimerStripMenuItem.Click += new System.EventHandler(this.ResetTimerStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
             // 
             // Form1
             // 
@@ -157,6 +173,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitRefocusToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem ResetTimerStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

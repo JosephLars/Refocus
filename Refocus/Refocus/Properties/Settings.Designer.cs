@@ -37,13 +37,13 @@ namespace Refocus.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30")]
-        public int InactivitySecs {
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int InactivityMins {
             get {
-                return ((int)(this["InactivitySecs"]));
+                return ((int)(this["InactivityMins"]));
             }
             set {
-                this["InactivitySecs"] = value;
+                this["InactivityMins"] = value;
             }
         }
         

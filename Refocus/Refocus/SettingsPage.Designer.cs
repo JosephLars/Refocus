@@ -30,25 +30,24 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.updAlertInterval = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnAlertTest = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnResetSettings = new System.Windows.Forms.Button();
-            this.btnResetTimer = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label2 = new System.Windows.Forms.Label();
             this.cboAlertType = new System.Windows.Forms.ComboBox();
+            this.updAlertInterval = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnResetSettings = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.updInactivityDetection = new System.Windows.Forms.NumericUpDown();
             this.chkInactivityDetection = new System.Windows.Forms.CheckBox();
             this.chkLaunchStartup = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updAlertInterval)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updInactivityDetection)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,27 +76,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Alerts";
             // 
-            // groupBox3
+            // btnAlertTest
             // 
-            this.groupBox3.Controls.Add(this.updInactivityDetection);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.chkInactivityDetection);
-            this.groupBox3.Location = new System.Drawing.Point(12, 209);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 100);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Inactivity Detection";
+            this.btnAlertTest.Location = new System.Drawing.Point(58, 99);
+            this.btnAlertTest.Name = "btnAlertTest";
+            this.btnAlertTest.Size = new System.Drawing.Size(75, 23);
+            this.btnAlertTest.TabIndex = 2;
+            this.btnAlertTest.Text = "Test";
+            this.btnAlertTest.UseVisualStyleBackColor = true;
+            this.btnAlertTest.Click += new System.EventHandler(this.btnAlertTest_Click);
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Interval";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(139, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "mins";
+            // 
+            // cboAlertType
+            // 
+            this.cboAlertType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAlertType.FormattingEnabled = true;
+            this.cboAlertType.Items.AddRange(new object[] {
+            "Balloon Tooltip",
+            "Message Box"});
+            this.cboAlertType.Location = new System.Drawing.Point(68, 58);
+            this.cboAlertType.Name = "cboAlertType";
+            this.cboAlertType.Size = new System.Drawing.Size(100, 21);
+            this.cboAlertType.TabIndex = 1;
+            this.cboAlertType.SelectedIndexChanged += new System.EventHandler(this.cboAlertType_SelectedIndexChanged);
             // 
             // updAlertInterval
             // 
@@ -122,15 +131,6 @@
             0});
             this.updAlertInterval.ValueChanged += new System.EventHandler(this.updAlertInterval_ValueChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(139, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "mins";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -140,15 +140,36 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Type";
             // 
-            // btnAlertTest
+            // label1
             // 
-            this.btnAlertTest.Location = new System.Drawing.Point(58, 99);
-            this.btnAlertTest.Name = "btnAlertTest";
-            this.btnAlertTest.Size = new System.Drawing.Size(75, 23);
-            this.btnAlertTest.TabIndex = 2;
-            this.btnAlertTest.Text = "Test";
-            this.btnAlertTest.UseVisualStyleBackColor = true;
-            this.btnAlertTest.Click += new System.EventHandler(this.btnAlertTest_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(35, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Interval";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.updInactivityDetection);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.chkInactivityDetection);
+            this.groupBox3.Location = new System.Drawing.Point(12, 209);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 100);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Inactivity Detection";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(130, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "mins";
             // 
             // label4
             // 
@@ -159,19 +180,10 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "After";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(130, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "secs";
-            // 
             // btnResetSettings
             // 
             this.btnResetSettings.AutoSize = true;
-            this.btnResetSettings.Location = new System.Drawing.Point(12, 330);
+            this.btnResetSettings.Location = new System.Drawing.Point(60, 324);
             this.btnResetSettings.Name = "btnResetSettings";
             this.btnResetSettings.Size = new System.Drawing.Size(97, 23);
             this.btnResetSettings.TabIndex = 2;
@@ -179,41 +191,18 @@
             this.btnResetSettings.UseVisualStyleBackColor = true;
             this.btnResetSettings.Click += new System.EventHandler(this.btnResetSettings_Click);
             // 
-            // btnResetTimer
-            // 
-            this.btnResetTimer.Location = new System.Drawing.Point(115, 330);
-            this.btnResetTimer.Name = "btnResetTimer";
-            this.btnResetTimer.Size = new System.Drawing.Size(97, 23);
-            this.btnResetTimer.TabIndex = 3;
-            this.btnResetTimer.Text = "Reset Timer";
-            this.btnResetTimer.UseVisualStyleBackColor = true;
-            this.btnResetTimer.Click += new System.EventHandler(this.btnResetTimer_Click);
-            // 
-            // cboAlertType
-            // 
-            this.cboAlertType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAlertType.FormattingEnabled = true;
-            this.cboAlertType.Items.AddRange(new object[] {
-            "Balloon Tooltip",
-            "Message Box"});
-            this.cboAlertType.Location = new System.Drawing.Point(68, 58);
-            this.cboAlertType.Name = "cboAlertType";
-            this.cboAlertType.Size = new System.Drawing.Size(100, 21);
-            this.cboAlertType.TabIndex = 1;
-            this.cboAlertType.SelectedIndexChanged += new System.EventHandler(this.cboAlertType_SelectedIndexChanged);
-            // 
             // updInactivityDetection
             // 
             this.updInactivityDetection.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", global::Refocus.Properties.Settings.Default, "InactivityDetection", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.updInactivityDetection.Enabled = global::Refocus.Properties.Settings.Default.InactivityDetection;
             this.updInactivityDetection.Location = new System.Drawing.Point(74, 61);
             this.updInactivityDetection.Maximum = new decimal(new int[] {
-            120,
+            10,
             0,
             0,
             0});
             this.updInactivityDetection.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -260,7 +249,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(224, 363);
-            this.Controls.Add(this.btnResetTimer);
             this.Controls.Add(this.btnResetSettings);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -276,9 +264,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updAlertInterval)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.updAlertInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.updInactivityDetection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -302,7 +290,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chkInactivityDetection;
         private System.Windows.Forms.Button btnResetSettings;
-        private System.Windows.Forms.Button btnResetTimer;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
